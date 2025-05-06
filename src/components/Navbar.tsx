@@ -9,7 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';  
+import {Link, useLocation} from 'react-router-dom';
 
 interface ComponentProps {
   active: string;
@@ -36,6 +37,10 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
 function Navbar({ active }: ComponentProps) {
   const [open, setOpen] = React.useState(false);
 
+  const location = useLocation();
+
+  const getIsActive = (path: string) => location.pathname === path;
+
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
@@ -56,15 +61,23 @@ function Navbar({ active }: ComponentProps) {
           </Typography>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Button variant={active === '1' ? 'contained' : 'text'} color="info" size="medium">
+          <Link to='/'>
+            <Button variant={getIsActive('/') ? 'contained' : 'text'} color="info">
               Главная
             </Button>
-            <Button variant={active === '2' ? 'contained' : 'text'} color="info" size="medium">
+          </Link>
+
+          <Link to='/list'>
+            <Button variant={getIsActive('/list') ? 'contained' : 'text'} color="info">
               Список зданий
             </Button>
-            <Button variant={active === '3' ? 'contained' : 'text'} color="info" size="medium">
-              Контакты
+          </Link>
+
+          <Link to='/chart'>
+            <Button variant={getIsActive('/chart') ? 'contained' : 'text'} color="info">
+              Диаграммы
             </Button>
+          </Link>
           </Box>
 
           <Box>
@@ -76,9 +89,17 @@ function Navbar({ active }: ComponentProps) {
 
             <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
               <Box>
-                <StyledMenuItem selected={active === '1'}>Главная</StyledMenuItem>
-                <StyledMenuItem selected={active === '2'}>Список зданий</StyledMenuItem>
-                <StyledMenuItem selected={active === '3'}>Контакты</StyledMenuItem>
+                <Link to="/" onClick={toggleDrawer(false)} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <StyledMenuItem selected={active === '1'}>Главная</StyledMenuItem>
+                </Link>
+
+                <Link to="/list" onClick={toggleDrawer(false)} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <StyledMenuItem selected={active === '2'}>Список зданий</StyledMenuItem>
+                </Link>
+
+                <Link to="/chart" onClick={toggleDrawer(false)} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <StyledMenuItem selected={active === '3'}>Диаграммы</StyledMenuItem>
+                </Link>
               </Box>
             </Drawer>
           </Box>
