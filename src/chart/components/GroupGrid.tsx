@@ -29,11 +29,98 @@ function CustomToolbar() {
 
 
 export function GroupGrid({ data }: GroupProps) {
-  const columns: GridColDef[] = [
-    { field: "Группа", headerName: "Группа", width: 150 },
-    { field: "Минимальная высота", headerName: "Мин. высота", width: 150 },
-    { field: "Максимальная высота", headerName: "Макс. высота", width: 150 },
-    { field: "Средняя высота", headerName: "Средняя высота", width: 150 },
+    const columns: GridColDef[] = [
+    { 
+      field: "Группа", 
+      headerName: "Группа", 
+      width: 180,
+      headerClassName: 'header-cell',
+      cellClassName: 'group-cell'
+    },
+    
+    { 
+      field: "Минимальный балл математика", 
+      headerName: "Мин. математика", 
+      width: 150,
+      headerClassName: 'math-header',
+      cellClassName: 'math-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    { 
+      field: "Средний балл математика", 
+      headerName: "Сред. математика", 
+      width: 150,
+      headerClassName: 'math-header',
+      cellClassName: 'math-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    { 
+      field: "Максимальная балл математика", 
+      headerName: "Макс. математика", 
+      width: 150,
+      headerClassName: 'math-header',
+      cellClassName: 'math-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    
+    { 
+      field: "Минимальный балл чтение", 
+      headerName: "Мин. чтение", 
+      width: 150,
+      headerClassName: 'reading-header',
+      cellClassName: 'reading-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    { 
+      field: "Средний балл чтение", 
+      headerName: "Сред. чтение", 
+      width: 150,
+      headerClassName: 'reading-header',
+      cellClassName: 'reading-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    { 
+      field: "Максимальная балл чтение", 
+      headerName: "Макс. чтение", 
+      width: 150,
+      headerClassName: 'reading-header',
+      cellClassName: 'reading-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    
+    { 
+      field: "Минимальный балл письмо", 
+      headerName: "Мин. письмо", 
+      width: 150,
+      headerClassName: 'writing-header',
+      cellClassName: 'writing-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    { 
+      field: "Средний балл письмо", 
+      headerName: "Сред. письмо", 
+      width: 150,
+      headerClassName: 'writing-header',
+      cellClassName: 'writing-cell',
+      headerAlign: 'center',
+      align: 'center'
+    },
+    { 
+      field: "Максимальная балл письмо", 
+      headerName: "Макс. письмо", 
+      width: 150,
+      headerClassName: 'writing-header',
+      cellClassName: 'writing-cell',
+      headerAlign: 'center',
+      align: 'center'
+    }
   ];
 
   return (

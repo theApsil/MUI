@@ -28,13 +28,14 @@ function BuildingsGrid() {
   const rows: GridRowsProp = buildings;
 
   const columns: GridColDef[] = [
-    { field: 'Название', headerName: 'Название', flex: 1 },
-    { field: 'Тип', flex: 0.5 },
-    { field: 'Страна', flex: 0.5 },
-    { field: 'Город', flex: 0.5 },
-    { field: 'Год', type: 'number' },
-    { field: 'Высота', type: 'number' },
-  ];
+    { field: 'Гендер', headerName: 'Гендер', flex: 0.5 },
+    { field: 'Расовая принадлежность', headerName: 'Раса/Этническая группа', flex: 0.7 },
+    { field: 'Уровень образования родителей', headerName: 'Образование родителей', flex: 1 },
+    { field: 'Обед', headerName: 'Тип обеда', flex: 0.5 },
+    { field: 'Балл по математике', headerName: 'Математика', type: 'number', flex: 0.5 },
+    { field: 'Балл по чтению', headerName: 'Чтение', type: 'number', flex: 0.5 },
+    { field: 'Балл по письму', headerName: 'Письмо', type: 'number', flex: 0.5 },
+];
 
   return (
     <Container maxWidth="lg" sx={{ height: '700px', mt: '20px' }}>

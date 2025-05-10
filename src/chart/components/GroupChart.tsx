@@ -18,23 +18,53 @@ type GroupChartProps = {
 
 function GroupChart({ data }: GroupChartProps) {
   const [series, setSeries] = React.useState({
-    'Максимальная высота': true,
-    'Средняя высота': false,
-    'Минимальная высота': false,
+    'Максимальная балл математика': true,
+    'Средний балл математика': true,
+    'Минимальный балл математика': false,
+    'Максимальная балл чтение': false,
+    'Средний балл чтение': true,
+    'Минимальный балл чтение': false,
+    'Максимальная балл письмо': false,
+    'Средний балл письмо': true,
+    'Минимальный балл письмо': false,
   });
 
   const [chartType, setChartType] = React.useState<string>('Гистограмма');
+
+  const getColor = (key: string) => {
+    if (key.includes('математика')) {
+      return {
+        'Максимальная балл математика': '#0d47a1',
+        'Средний балл математика': '#2196f3',
+        'Минимальный балл математика': '#bbdefb'
+      }[key];
+    }
+    
+    if (key.includes('чтение')) {
+      return {
+        'Максимальная балл чтение': '#e65100',
+        'Средний балл чтение': '#ff9800',
+        'Минимальный балл чтение': '#ffe0b2'
+      }[key];
+    }
+    
+    if (key.includes('письмо')) {
+      return {
+        'Максимальная балл письмо': '#2e7d32',
+        'Средний балл письмо': '#4caf50', 
+        'Минимальный балл письмо': '#c8e6c9'
+      }[key];
+    }
+    
+    return undefined;
+  };
 
   const seriesY = Object.entries(series)
     .filter(([_, value]) => value)
     .map(([key]) => ({
       dataKey: key,
       label: key,
-      color:
-        key === 'Максимальная высота' ? '#bbdefb' :
-        key === 'Средняя высота' ? '#64b5f6' :
-        key === 'Минимальная высота' ? '#1976d2' :
-        undefined,
+      color: getColor(key),
     }));
 
   const chartSetting = {
