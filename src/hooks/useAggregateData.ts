@@ -5,7 +5,7 @@ import {
     fetchScoreByTestPrep,
     fetchScoreByGender,
     fetchScoreByLunch,
-} from "../services/averageService";
+} from "../services/aggregateService";
 import { AggregateData } from "../types/AggregateData";
 
 export const useScoreByRace = () => {
