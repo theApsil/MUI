@@ -30,7 +30,7 @@ function CustomToolbar() {
 export function GroupGrid({ data }: GroupProps) {
     const columns: GridColDef[] = [
     { 
-      field: "Группа", 
+      field: "group_name",
       headerName: "Группа", 
       width: 180,
       headerClassName: 'header-cell',
@@ -38,7 +38,7 @@ export function GroupGrid({ data }: GroupProps) {
     },
     
     { 
-      field: "Минимальный балл математика", 
+      field: "math_min_score",
       headerName: "Мин. математика", 
       width: 150,
       headerClassName: 'math-header',
@@ -47,7 +47,7 @@ export function GroupGrid({ data }: GroupProps) {
       align: 'center'
     },
     { 
-      field: "Средний балл математика", 
+      field: "math_avg_score",
       headerName: "Сред. математика", 
       width: 150,
       headerClassName: 'math-header',
@@ -56,7 +56,7 @@ export function GroupGrid({ data }: GroupProps) {
       align: 'center'
     },
     { 
-      field: "Максимальная балл математика", 
+      field: "math_max_score",
       headerName: "Макс. математика", 
       width: 150,
       headerClassName: 'math-header',
@@ -66,7 +66,7 @@ export function GroupGrid({ data }: GroupProps) {
     },
     
     { 
-      field: "Минимальный балл чтение", 
+      field: "reading_min_score",
       headerName: "Мин. чтение", 
       width: 150,
       headerClassName: 'reading-header',
@@ -75,7 +75,7 @@ export function GroupGrid({ data }: GroupProps) {
       align: 'center'
     },
     { 
-      field: "Средний балл чтение", 
+      field: "reading_avg_score",
       headerName: "Сред. чтение", 
       width: 150,
       headerClassName: 'reading-header',
@@ -84,7 +84,7 @@ export function GroupGrid({ data }: GroupProps) {
       align: 'center'
     },
     { 
-      field: "Максимальная балл чтение", 
+      field: "reading_max_score",
       headerName: "Макс. чтение", 
       width: 150,
       headerClassName: 'reading-header',
@@ -94,7 +94,7 @@ export function GroupGrid({ data }: GroupProps) {
     },
     
     { 
-      field: "Минимальный балл письмо", 
+      field: "writing_min_score",
       headerName: "Мин. письмо", 
       width: 150,
       headerClassName: 'writing-header',
@@ -103,7 +103,7 @@ export function GroupGrid({ data }: GroupProps) {
       align: 'center'
     },
     { 
-      field: "Средний балл письмо", 
+      field: "writing_avg_score",
       headerName: "Сред. письмо", 
       width: 150,
       headerClassName: 'writing-header',
@@ -112,7 +112,7 @@ export function GroupGrid({ data }: GroupProps) {
       align: 'center'
     },
     { 
-      field: "Максимальная балл письмо", 
+      field: "writing_max_score",
       headerName: "Макс. письмо", 
       width: 150,
       headerClassName: 'writing-header',

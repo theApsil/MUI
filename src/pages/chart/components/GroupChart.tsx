@@ -20,52 +20,66 @@ type GroupChartProps = {
 
 function GroupChart({ data }: GroupChartProps) {
   const [series, setSeries] = React.useState({
-    'Максимальная балл математика': true,
-    'Средний балл математика': true,
-    'Минимальный балл математика': false,
-    'Максимальная балл чтение': false,
-    'Средний балл чтение': true,
-    'Минимальный балл чтение': false,
-    'Максимальная балл письмо': false,
-    'Средний балл письмо': true,
-    'Минимальный балл письмо': false,
+    'math_avg_score': true,
+    'math_max_score': true,
+    'math_min_score': true,
+    'reading_avg_score': false,
+    'reading_max_score': false,
+    'reading_min_score': false,
+    'writing_avg_score': false,
+    'writing_max_score': false,
+    'writing_min_score': false,
   });
 
   const [chartType, setChartType] = React.useState<string>('Гистограмма');
 
   const getColor = (key: string) => {
-    if (key.includes('математика')) {
+    if (key.includes('math')) {
       return {
-        'Максимальная балл математика': '#0d47a1',
-        'Средний балл математика': '#2196f3',
-        'Минимальный балл математика': '#bbdefb'
+        'math_max_score': '#0d47a1',
+        'math_avg_score': '#2196f3',
+        'math_min_score': '#bbdefb',
       }[key];
     }
-    
-    if (key.includes('чтение')) {
+
+    if (key.includes('reading')) {
       return {
-        'Максимальная балл чтение': '#e65100',
-        'Средний балл чтение': '#ff9800',
-        'Минимальный балл чтение': '#ffe0b2'
+        'reading_max_score': '#e65100',
+        'reading_avg_score': '#ff9800',
+        'reading_min_score': '#ffe0b2',
       }[key];
     }
-    
-    if (key.includes('письмо')) {
+
+    if (key.includes('writing')) {
       return {
-        'Максимальная балл письмо': '#2e7d32',
-        'Средний балл письмо': '#4caf50', 
-        'Минимальный балл письмо': '#c8e6c9'
+        'writing_max_score': '#2e7d32',
+        'writing_avg_score': '#4caf50',
+        'writing_min_score': '#c8e6c9',
       }[key];
     }
     
     return undefined;
   };
 
+  const labels = {
+    math_max_score: 'Максимальный балл по математике',
+    math_avg_score: 'Средний балл по математике',
+    math_min_score: 'Минимальный балл по математике',
+
+    reading_max_score: 'Максимальный балл по чтению',
+    reading_avg_score: 'Средний балл по чтению',
+    reading_min_score: 'Минимальный балл по чтению',
+
+    writing_max_score: 'Максимальный балл по письму',
+    writing_avg_score: 'Средний балл по письму',
+    writing_min_score: 'Минимальный балл по письму',
+  };
+
   const seriesY = Object.entries(series)
     .filter(([_, value]) => value)
     .map(([key]) => ({
       dataKey: key,
-      label: key,
+      label: labels[key],
       color: getColor(key),
     }));
 
@@ -88,7 +102,7 @@ function GroupChart({ data }: GroupChartProps) {
       {chartType === 'Гистограмма' ? (
         <BarChart
           dataset={data}
-          xAxis={[{ scaleType: 'band', dataKey: 'Группа' }]}
+          xAxis={[{ scaleType: 'band', dataKey: 'group_name' }]}
           series={seriesY}
           slotProps={{
             legend: {
@@ -101,7 +115,7 @@ function GroupChart({ data }: GroupChartProps) {
       ) : (
         <LineChart
           dataset={data}
-          xAxis={[{ scaleType: 'band', dataKey: 'Группа' }]}
+          xAxis={[{ scaleType: 'band', dataKey: 'group_name' }]}
           series={seriesY}
           slotProps={{
             legend: {
