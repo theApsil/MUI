@@ -1,7 +1,7 @@
 import './styles/App.css'; /* изменить путь */
 
-import Main from "./main/Main";
-import List from "./list/List";
+import Main from "./pages/main/Main";
+import List from "./pages/list/List";
 
 function App() {
   return (

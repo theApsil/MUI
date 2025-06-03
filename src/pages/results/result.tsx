@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import structures from "../data"
+import structures from "../../data"
 import { Box, Typography } from "@mui/material";
 
-export default function Building() {
+export default function Result() {
   const { id } = useParams<{ id: string }>();
   const structure = structures[Number(id)];
 

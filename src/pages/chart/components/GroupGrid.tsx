@@ -5,7 +5,6 @@ import {
   GridToolbarFilterButton,
   GridToolbarExport,
   GridColDef,
-  GridRowsProp,
 } from '@mui/x-data-grid';
 import Box from '@mui/material/Box'
 import { ruRU } from '@mui/x-data-grid/locales';

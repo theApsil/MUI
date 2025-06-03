@@ -1,4 +1,4 @@
-import structures from "../../data";
+import structures from "../../../data";
 
 import { Link } from "react-router-dom";
 

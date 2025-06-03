@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
 import * as React from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 import { GroupGrid } from './components/GroupGrid';
 
 import { gender, lunch, parental_level_of_education, race_ethnicity, test_preparation_course } from './groupdata';

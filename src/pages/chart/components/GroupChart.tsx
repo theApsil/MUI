@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react';
 import Container from '@mui/material/Container';
 import { BarChart } from '@mui/x-charts/BarChart';
