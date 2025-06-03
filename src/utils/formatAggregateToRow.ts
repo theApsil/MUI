@@ -2,8 +2,9 @@ import {AggregateData} from "../types/AggregateData";
 import {AggregateDataRow} from "../types/AggregateDataRow";
 
 export const formatAggregateToRow = (data: AggregateData[]): AggregateDataRow[] => {
-    return data.map((entry): AggregateDataRow => {
+    return data.map((entry, index): AggregateDataRow => {
         const row: AggregateDataRow = {
+            id: index,
             group_name: entry.name,
             math_avg_score: 0,
             math_max_score: 0,

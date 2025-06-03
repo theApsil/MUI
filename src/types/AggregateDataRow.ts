@@ -1,4 +1,5 @@
 export interface AggregateDataRow {
+    id: number,
     group_name: string
     math_avg_score: number;
     math_max_score: number;

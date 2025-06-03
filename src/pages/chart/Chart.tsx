@@ -8,8 +8,15 @@ import * as React from 'react';
 import Navbar from '../../components/Navbar';
 import { GroupGrid } from './components/GroupGrid';
 
-import { gender, lunch, parental_level_of_education, race_ethnicity, test_preparation_course } from './groupdata';
 import GroupChart from './components/GroupChart';
+import {
+  useScoreByRace,
+  useScoreByParent,
+  useScoreByTestPrep,
+  useScoreByGender,
+  useScoreByLunch,
+} from "../../hooks/useAggregateData";
+import {formatAggregateToRow} from "../../utils/formatAggregateToRow";
 
 
 type tSelect = "Гендер" | "Обед" | "Уровень образования родителей" | "Расовая принадлежность" | "Прохождение подготовительного курса";
@@ -20,16 +27,32 @@ function Chart() {
     setGroup(event.target.value as tSelect);
   }
 
-  const getData = () => {
+  const genderQuery = useScoreByGender();
+  const lunchQuery = useScoreByLunch();
+  const parentQuery = useScoreByParent();
+  const raceQuery = useScoreByRace();
+  const testPrepQuery = useScoreByTestPrep();
+
+  const currentQuery = (() => {
     switch (group) {
-      case "Гендер": return gender;
-      case "Обед": return lunch;
-      case "Уровень образования родителей": return parental_level_of_education;
-      case "Расовая принадлежность": return race_ethnicity;
-      case "Прохождение подготовительного курса": return test_preparation_course;
-      default: return gender;
+      case "Гендер":
+        return genderQuery;
+      case "Обед":
+        return lunchQuery;
+      case "Уровень образования родителей":
+        return parentQuery;
+      case "Расовая принадлежность":
+        return raceQuery;
+      case "Прохождение подготовительного курса":
+        return testPrepQuery;
+      default:
+        return genderQuery;
     }
-  };
+  })();
+
+  const data = React.useMemo(() => {
+    return currentQuery.data ? formatAggregateToRow(currentQuery.data) : [];
+  }, [currentQuery.data]);
 
   return (
     <div>
@@ -51,8 +74,8 @@ function Chart() {
           </Select>
         </FormControl>
       </Box>
-      <GroupGrid data={getData()}/>
-      <GroupChart data={getData()}/>
+      <GroupGrid data={data}/>
+      <GroupChart data={data}/>
     </div>
   );
 }
